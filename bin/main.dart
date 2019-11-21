@@ -1,7 +1,8 @@
+// Stack Calculator
 // A stack machine processes instructions by pushing and popping values to an
 // internal stack. A simple example of this is a calculator.
 //
-//  The argument passed to run(instructions) will always be a string containing a series of instructions.
+//  The argument passed to stackCalc(instructions) will always be a string containing a series of instructions.
 //  The instruction set of the calculator will be this:
 //
 //  +: Pop the last 2 values from the stack, add them, and push the result onto the stack.
@@ -16,11 +17,11 @@
 //  "Invalid instruction: [instruction]"
 
 /// Examples
-//  StackCalc("") ➞ 0
-//  StackCalc("5 6 +") ➞ 11
-//  StackCalc("3 DUP +") ➞ 6
-//  StackCalc("6 5 5 7 * - /") ➞ 5
-//  StackCalc("x y +") ➞ Invalid instruction: x
+//  stackCalc("") ➞ 0
+//  stackCalc("5 6 +") ➞ 11
+//  stackCalc("3 DUP +") ➞ 6
+//  stackCalc("6 5 5 7 * - /") ➞ 5
+//  stackCalc("x y +") ➞ Invalid instruction: x
 
 main() {
 }
