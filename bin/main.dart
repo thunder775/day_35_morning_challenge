@@ -22,6 +22,54 @@
 //  stackCalc("3 DUP +") ➞ 6
 //  stackCalc("6 5 5 7 * - /") ➞ 5
 //  stackCalc("x y +") ➞ Invalid instruction: x
+/// TODO implement the push'PSH'
+int stackCalc(String argument) {
+  List<String> walkthrough = argument.split(' ').toList();
+  List<int> stack = [];
+
+  for (int i = 0; i < walkthrough.length; i++) {
+    if (walkthrough[i] == '+') {
+      if (stack.length >= 2) {
+        stack.add(stack.last + stack[stack.length - 2]);
+        stack.removeAt(stack.length - 2);
+        stack.removeAt(stack.length - 2);
+      }
+    } else if (walkthrough[i] == 'DUP') {
+      if (stack.isNotEmpty) {
+        stack.add(stack.last);
+      }
+    } else if (walkthrough[i] == 'POP') {
+      if (stack.isNotEmpty) {
+        stack.removeLast();
+      }
+    } else if (walkthrough[i] == '-') {
+      if (stack.length >= 2) {
+        stack.add(stack.last - stack[stack.length - 2]);
+        stack.removeAt(stack.length - 2);
+        stack.removeAt(stack.length - 2);
+      }
+    } else if (walkthrough[i] == '*') {
+      if (stack.length >= 2) {
+        stack.add(stack.last * stack[stack.length - 2]);
+        stack.removeAt(stack.length - 2);
+        stack.removeAt(stack.length - 2);
+      }
+    } else if (walkthrough[i] == '/') {
+      if (stack.length >= 2) {
+        stack.add(stack.last ~/ stack[stack.length - 2]);
+        stack.removeAt(stack.length - 2);
+        stack.removeAt(stack.length - 2);
+      }
+    } else {
+      (stack.add(int.parse(walkthrough[i])));
+    }
+  }
+
+  print(stack);
+
+  return stack.last;
+}
 
 main() {
+  print(stackCalc("3 *"));
 }
